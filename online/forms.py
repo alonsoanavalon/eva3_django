@@ -27,6 +27,10 @@ class LoginForm(forms.ModelForm):
             "password"
         ]
 
+class updateConsulta(forms.ModelForm):
+    class Meta:
+        model= Consulta
+        fields='__all__'
 
 class GenerarRespuestaForm(forms.ModelForm):
     class Meta:
@@ -36,5 +40,5 @@ class GenerarRespuestaForm(forms.ModelForm):
             "respuesta"
         ]
 
-        
+
 

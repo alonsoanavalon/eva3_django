@@ -25,6 +25,8 @@ urlpatterns = [
     path('administracion/', views.renderAdmin),
     path('signin/', views.ingresar),
     path('agregarConsultas/', views.agregarConsulta),
+    path('usuarios/', views.renderCliente),
+    path('modificarConsultas/<int:id>', views.modificarConsulta),
     path('eliminarConsulta/<int:id>', views.quitarConsulta),
     path('generarRespuesta/<int:id>', views.generarRespuesta),
     path('addanswer/<int:id>', views.guardarRespuesta)
