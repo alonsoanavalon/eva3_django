@@ -10,3 +10,6 @@ def landing_page(request):
 
 def login_page(request):
     return render(request, 'login.html')
+
+def administracion_page(request):
+    return render(request, 'administracion.html')
