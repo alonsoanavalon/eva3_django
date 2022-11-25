@@ -19,5 +19,13 @@ class RespuestaForm(forms.ModelForm):
         model= Respuesta
         fields = '__all__'
 
+class LoginForm(forms.ModelForm):
+    class Meta:
+        model= User
+        fields = [
+            "user",
+            "password"
+        ]
+
         
 

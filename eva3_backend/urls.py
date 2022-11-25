@@ -21,6 +21,7 @@ from online import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', administracion.landing_page),
-    path('login/', administracion.login_page),
-    path('administracion/', views.renderAdmin)
+    path('login/', views.login_page),
+    path('administracion/', views.renderAdmin),
+    path('signin/', views.ingresar)
 ]

@@ -27,56 +27,70 @@
         </div>
       </nav>
 
-    <h2>Consultas</h2>
-
-    <table class="table">
-        <thead class="table-dark">
-            <tr>
-                <th>ID</th>
-                <th>Cliente</th>
-                <th>Acciones</th>
-              </tr>
-        </thead>
-        <tbody>
-            {% for consulta in consultas %}
-            <tr>
-                <td>{{ consulta.id }}</td>
-                <td>{{ consulta.cliente }}</td>
-                <td>
-                    <a class="btn btn-primary" href="#">Contestar</a>
-                </td>
-
-     
-            </tr>
-            {% endfor %}
-        </tbody>
-      </table>
-
-      <h2>Respuestas</h2>
+    <h1 style="text-align:center; padding:1.5rem;">Panel Técnico Master</h1>
 
 
-      <table class="table">
-        <thead class="table-dark">
-            <tr>
-                <th>ID</th>
-                <th>Tecnico</th>
-                <th>Acciones</th>
-              </tr>
-        </thead>
-        <tbody>
-            {% for respuesta in respuestas %}
-            <tr>
-                <td>{{ respuesta.id }}</td>
-                <td>{{ respuesta.tecnico }}</td>
-                <td>
-                    <a class="btn btn-primary" href="#">Editar</a>
-                </td>
 
-     
-            </tr>
-            {% endfor %}
-        </tbody>
-      </table>
+    <div style="max-width:80%; margin:0 auto;">
+        <h2>Consultas</h2>
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th>Código consulta</th>
+                    <th>Cliente</th>
+                    <th>Consulta</th>
+                    <th>Acciones</th>
+                  </tr>
+            </thead>
+            <tbody>
+                {% for consulta in consultas %}
+                <tr>
+                    <td>#{{ consulta.id }}</td>
+                    <td>{{ consulta.cliente }}</td>
+                    <td>{{ consulta.consulta }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="#">Contestar</a>
+                    </td>
+    
+         
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    
+          <h2>Respuestas</h2>
+    
+    
+          <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th>Código respuesta</th>
+                    <th>Código consulta</th>
+                    <th>Tecnico Máster</th>
+                    <th>Respuesta</th>
+                    <th>Acciones</th>
+                  </tr>
+            </thead>
+            <tbody>
+                {% for respuesta in respuestas %}
+                <tr>
+                    <td>#{{ respuesta.id }}</td>
+                    <td>#{{ respuesta.id_consulta_id }}</td>
+                    <td>{{ respuesta.tecnico }}</td>
+                    <td>{{ respuesta.respuesta }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="#">Editar</a>
+                    </td>
+    
+         
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    
+    
+    
+    </div>
 
 
 
