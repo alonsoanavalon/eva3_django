@@ -81,6 +81,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": 'eva3',
+        "HOST": '127.0.0.1',
         "USER":'root',
         "PASSWORD": '',
     }
