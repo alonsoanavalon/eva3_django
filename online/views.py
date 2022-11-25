@@ -7,7 +7,6 @@ from online.forms import ConsultaForm
 from online.models import Respuesta
 from online.forms import RespuestaForm
 from online.forms import LoginForm
-from online.forms import GenerarRespuestaForm
 from django.views.decorators.csrf import csrf_exempt
 from django.http import Http404
 
@@ -54,11 +53,21 @@ def ingresar(request):
             return redirect('/')
     else:
         return redirect('/')
-    
+
+def renderCliente(request):
+    respuestas= Respuesta.objects.all()
+    consultas = Consulta.objects.all()
+   
+    data = {
+        'respuestas': respuestas,
+        'consultas': consultas
+    }
+    return render(request, 'clientes.html', data)
+
 def listadoConsultas(request):
    consultas= Consulta.objects.all()
    data = {'consultas':consultas}
-   return render(request, 'consultas.html', data)
+   return render(request, 'clientes.html', data)
 
 
 def agregarConsulta(request):
@@ -70,38 +79,11 @@ def agregarConsulta(request):
        return listadoConsultas(request)
    data = {'form' : form}
    return render(request, 'agregarConsultas.html', data )
-
-def login_page(request):
-    return render(request, 'login.html', {'form': LoginForm})
-
-def generarRespuesta(request, id):
-    return render(request, 'agregarRespuestas.html', {'form': GenerarRespuestaForm, 'consulta_id': id})
-
-def guardarRespuesta(request, id):
-    print(request)
-    respuesta = request.POST.dict()
-    respuestaFormat = {}
-    form = forms.RespuestaForm()
-    if request.method == 'POST':
-        if respuesta:
-            respuesta['tecnico']
-            respuesta['respuesta']
-            respuesta['id_consulta'] = id
-            form = RespuestaForm(respuesta)
-            if form.is_valid():
-                form.save()
-                return redirect('/administracion')
-            else:
-                return redirect('/')
-    return redirect('/')
-    
-
-
  
-def quitarConsulta(request, id):
-   consulta= Consulta.objects.get(id=id)
-   consulta.delete()
-   return redirect("/administracion")
+def quitarComuna(request, id):
+   comuna= Comuna.objects.get(id=id)
+   comuna.delete()
+   return redirect("/comunas")
   
  
 def cambiarComuna(request, id):

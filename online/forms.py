@@ -37,4 +37,9 @@ class GenerarRespuestaForm(forms.ModelForm):
         ]
 
         
+class updateConsulta(forms.ModelForm):
+    class Meta:
+        model= Consulta
+        fields='__all__'
+
 
