@@ -7,14 +7,12 @@ class Consulta(models.Model):
    consulta=models.CharField(max_length=240)
    def __str__(self):
        return str(self.id)+" "+self.cliente+" "+self.consulta
+       
 class Respuesta(models.Model):
    id= models.AutoField(primary_key=True)
    id_consulta = models.ForeignKey(Consulta, on_delete=models.CASCADE)
    tecnico= models.CharField(max_length=100)
    respuesta=models.CharField(max_length=240)
-
-   def __str__(self):
-       return str(self.id)+" "+self.tecnico
 
 class User(models.Model):
    id= models.AutoField(primary_key=True)

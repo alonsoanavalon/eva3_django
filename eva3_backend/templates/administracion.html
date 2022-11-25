@@ -49,7 +49,9 @@
                     <td>{{ consulta.cliente }}</td>
                     <td>{{ consulta.consulta }}</td>
                     <td>
-                        <a class="btn btn-primary" href="#">Contestar</a>
+                        <a class="btn btn-primary" href="/generarRespuesta/{{consulta.id}}">Contestar</a>
+                        <a class="btn btn-danger" href="/eliminarConsulta/{{consulta.id}}">Eliminar</a>
+                        
                     </td>
     
          

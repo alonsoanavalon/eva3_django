@@ -7,6 +7,7 @@ from online.forms import ConsultaForm
 from online.models import Respuesta
 from online.forms import RespuestaForm
 from online.forms import LoginForm
+from online.forms import GenerarRespuestaForm
 from django.views.decorators.csrf import csrf_exempt
 from django.http import Http404
 
@@ -24,8 +25,7 @@ def renderAdmin(request):
     }
    return render(request, 'administracion.html', data)
 
-def login_page(request):
-    return render(request, 'login.html', {'form': LoginForm})
+
 
 
 @csrf_exempt 
@@ -39,7 +39,9 @@ def ingresar(request):
                 if is_logged:
                     if is_logged.password == datos['password']:
                         if is_logged.rol == "ADMINISTRADOR":
-                            return redirect('/administracion')   
+                            return redirect('/administracion') 
+                        elif is_logger.rol == "TECNICO":
+                            return redirect('/administracion') 
                         else:
                             return redirect('/usuarios')                     
                     else:
@@ -68,11 +70,38 @@ def agregarConsulta(request):
        return listadoConsultas(request)
    data = {'form' : form}
    return render(request, 'agregarConsultas.html', data )
+
+def login_page(request):
+    return render(request, 'login.html', {'form': LoginForm})
+
+def generarRespuesta(request, id):
+    return render(request, 'agregarRespuestas.html', {'form': GenerarRespuestaForm, 'consulta_id': id})
+
+def guardarRespuesta(request, id):
+    print(request)
+    respuesta = request.POST.dict()
+    respuestaFormat = {}
+    form = forms.RespuestaForm()
+    if request.method == 'POST':
+        if respuesta:
+            respuesta['tecnico']
+            respuesta['respuesta']
+            respuesta['id_consulta'] = id
+            form = RespuestaForm(respuesta)
+            if form.is_valid():
+                form.save()
+                return redirect('/administracion')
+            else:
+                return redirect('/')
+    return redirect('/')
+    
+
+
  
-def quitarComuna(request, id):
-   comuna= Comuna.objects.get(id=id)
-   comuna.delete()
-   return redirect("/comunas")
+def quitarConsulta(request, id):
+   consulta= Consulta.objects.get(id=id)
+   consulta.delete()
+   return redirect("/administracion")
   
  
 def cambiarComuna(request, id):

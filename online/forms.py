@@ -27,5 +27,14 @@ class LoginForm(forms.ModelForm):
             "password"
         ]
 
+
+class GenerarRespuestaForm(forms.ModelForm):
+    class Meta:
+        model = Respuesta
+        fields = [
+            "tecnico",
+            "respuesta"
+        ]
+
         
 
