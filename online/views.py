@@ -7,6 +7,7 @@ from online.forms import ConsultaForm
 from online.models import Respuesta
 from online.forms import RespuestaForm
 from online.forms import LoginForm
+from online.forms import updateConsulta
 from django.views.decorators.csrf import csrf_exempt
 from django.http import Http404
 
@@ -52,11 +53,21 @@ def ingresar(request):
             return redirect('/')
     else:
         return redirect('/')
-    
+
+def renderCliente(request):
+    respuestas= Respuesta.objects.all()
+    consultas = Consulta.objects.all()
+   
+    data = {
+        'respuestas': respuestas,
+        'consultas': consultas
+    }
+    return render(request, 'clientes.html', data)
+
 def listadoConsultas(request):
    consultas= Consulta.objects.all()
    data = {'consultas':consultas}
-   return render(request, 'consultas.html', data)
+   return render(request, 'clientes.html', data)
 
 
 def agregarConsulta(request):
@@ -68,7 +79,20 @@ def agregarConsulta(request):
        return listadoConsultas(request)
    data = {'form' : form}
    return render(request, 'agregarConsultas.html', data )
- 
+
+def modificarConsulta(request, id):
+    consultas = Consulta.objects.get(id=id)
+    form = updateConsulta(instance=consultas)
+    if request.method == 'POST':
+        form= updateConsulta(request.POST, instance=consultas)
+        if form.is_valid():
+            form.save()
+        return listadoConsultas(request)
+    data = {'form':form}
+    return render(request, 'agregarConsultas.html', data)
+
+
+
 def quitarComuna(request, id):
    comuna= Comuna.objects.get(id=id)
    comuna.delete()

@@ -27,5 +27,9 @@ class LoginForm(forms.ModelForm):
             "password"
         ]
 
-        
+class updateConsulta(forms.ModelForm):
+    class Meta:
+        model= Consulta
+        fields='__all__'
+
 
