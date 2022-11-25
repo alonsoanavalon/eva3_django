@@ -29,5 +29,7 @@ urlpatterns = [
     path('modificarConsultas/<int:id>', views.modificarConsulta),
     path('eliminarConsulta/<int:id>', views.quitarConsulta),
     path('generarRespuesta/<int:id>', views.generarRespuesta),
-    path('addanswer/<int:id>', views.guardarRespuesta)
+    path('addanswer/<int:id>', views.guardarRespuesta),
+    path('usuarios/', views.renderCliente),
+    path('modificarConsultas/<int:id>', views.modificarConsulta)
 ]

@@ -126,6 +126,11 @@ def quitarConsulta(request, id):
    consulta= Consulta.objects.get(id=id)
    consulta.delete()
    return redirect("/administracion")
+ 
+def quitarComuna(request, id):
+   comuna= Comuna.objects.get(id=id)
+   comuna.delete()
+   return redirect("/comunas")
   
  
 def cambiarComuna(request, id):
