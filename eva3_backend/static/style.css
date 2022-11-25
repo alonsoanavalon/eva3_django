@@ -1,12 +1,27 @@
 .bienvenida{
-    justify-content: center;
     text-align: center;
+    justify-content: center;
+    position: absolute;
+    top: 200px;
 }
 
 .navmodificado{
+    width: auto;
     height: 130px;
 }
 
 #logonav{
     width:50%;
+}
+
+.fondo{
+    z-index: -1;
+}
+
+.bg{
+    background-image: url(fondo.png);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

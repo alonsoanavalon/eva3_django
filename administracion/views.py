@@ -8,3 +8,5 @@ from . import forms
 def landing_page(request):
     return render(request, 'index.html')
 
+def login_page(request):
+    return render(request, 'login.html')
