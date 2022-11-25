@@ -53,16 +53,21 @@ def ingresar(request):
     else:
         return redirect('/')
     
- 
-def agregarComuna(request):
-   form=forms.ComunaForm()
+def listadoConsultas(request):
+   consultas= Consulta.objects.all()
+   data = {'consultas':consultas}
+   return render(request, 'consultas.html', data)
+
+
+def agregarConsulta(request):
+   form=forms.ConsultaForm()
    if request.method == 'POST':
-       form = ComunaForm(request.POST)
+       form = ConsultaForm(request.POST)
        if form.is_valid():
            form.save()
-       return listadoComunas(request)
+       return listadoConsultas(request)
    data = {'form' : form}
-   return data
+   return render(request, 'agregarConsultas.html', data )
  
 def quitarComuna(request, id):
    comuna= Comuna.objects.get(id=id)

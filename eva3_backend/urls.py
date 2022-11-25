@@ -23,5 +23,6 @@ urlpatterns = [
     path('', administracion.landing_page),
     path('login/', views.login_page),
     path('administracion/', views.renderAdmin),
-    path('signin/', views.ingresar)
+    path('signin/', views.ingresar),
+    path('agregarConsultas/', views.agregarConsulta)
 ]

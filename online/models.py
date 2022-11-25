@@ -6,7 +6,7 @@ class Consulta(models.Model):
    cliente= models.CharField(max_length=35)
    consulta=models.CharField(max_length=240)
    def __str__(self):
-       return str(self.id)+" "+self.cliente
+       return str(self.id)+" "+self.cliente+" "+self.consulta
 class Respuesta(models.Model):
    id= models.AutoField(primary_key=True)
    id_consulta = models.ForeignKey(Consulta, on_delete=models.CASCADE)
