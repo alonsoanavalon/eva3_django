@@ -11,10 +11,15 @@ from online.forms import RespuestaForm
  
 from . import forms
  
-def listadoUsers(request):
-   users= User.objects.all()
-   data = {'users':users}
-   return render(request, 'users.html', data)
+def renderAdmin(request):
+   respuestas= Respuesta.objects.all()
+   consultas = Consulta.objects.all()
+   
+   data = {
+        'respuestas': respuestas,
+        'consultas': consultas
+    }
+   return render(request, 'administracion.html', data)
  
 def agregarComuna(request):
    form=forms.ComunaForm()
